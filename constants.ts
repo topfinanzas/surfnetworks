@@ -21,6 +21,6 @@ export const HERO_CONTENT = {
 
 export const FOOTER_LINKS = [
   { label: 'Terms of Service', href: '/terms' },
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Cookie Policy', href: '#' },
+  { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Cookie Policy', href: '/cookie-policy' },
 ];

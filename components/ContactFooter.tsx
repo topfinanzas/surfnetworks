@@ -1,14 +1,27 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, ArrowRight, Linkedin, Twitter } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Instagram, ArrowUp } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './Button';
-import { FOOTER_LINKS } from '../constants';
+import { FOOTER_LINKS, NAV_ITEMS } from '../constants';
 import { WaveDivider } from './WaveDivider';
 
 export const ContactFooter: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer id="contact" className="bg-surf-deep text-white relative pt-32 md:pt-48 pb-8">
@@ -16,7 +29,7 @@ export const ContactFooter: React.FC = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         
-        {/* CTA Section - Only show on Home page or if explicitly desired everywhere. Keeping for consistent branding. */}
+        {/* CTA Section */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,14 +73,8 @@ export const ContactFooter: React.FC = () => {
               Optimizing digital landscapes through data-driven content and programmatic networks.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-surf-crest transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-surf-crest transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-surf-crest transition-colors">
-                <Mail size={20} />
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-surf-crest transition-colors">
+                <Instagram size={20} />
               </a>
             </div>
           </motion.div>
@@ -80,10 +87,13 @@ export const ContactFooter: React.FC = () => {
           >
             <h4 className="font-bold text-lg mb-6">Company</h4>
             <ul className="space-y-4">
-              <li><Link to="/#about" className="text-gray-400 hover:text-surf-foam transition-colors">About Us</Link></li>
-              <li><Link to="/#careers" className="text-gray-400 hover:text-surf-foam transition-colors">Careers</Link></li>
-              <li><Link to="/#partners" className="text-gray-400 hover:text-surf-foam transition-colors">Partners</Link></li>
-              <li><Link to="/#contact" className="text-gray-400 hover:text-surf-foam transition-colors">Contact</Link></li>
+              {NAV_ITEMS.map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-gray-400 hover:text-surf-foam transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
@@ -110,6 +120,23 @@ export const ContactFooter: React.FC = () => {
           <p>&copy; {new Date().getFullYear()} SurfNetworks, Inc. All rights reserved.</p>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-surf-crest text-white rounded-full shadow-lg flex items-center justify-center hover:bg-surf-foam hover:text-surf-deep transition-colors"
+            aria-label="Back to Top"
+          >
+            <ArrowUp size={24} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </footer>
   );
 };

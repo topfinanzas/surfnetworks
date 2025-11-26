@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLocation, Link } from 'react-router-dom';
 import { NAV_ITEMS } from '../constants';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  // Header should be solid if scrolled OR if not on the home page
+  const isSolid = isScrolled || !isHome;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,15 +21,19 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Helper to handle navigation: scroll to section if on home, otherwise just standard link behavior
+  // Note: Since constants.ts has absolute paths (e.g. '/#contact'), native <a> tags work well for hash jumping from other pages.
+  // We keep using <a> tags as defined in NAV_ITEMS.
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-surf-deep/90 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'
+        isSolid ? 'bg-surf-deep/90 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <a href="#" className="flex items-center group">
+        <a href="/" className="flex items-center group">
           <img 
             src="https://media.topfinanzas.com/images/surfnetworks/logo-surfnetworks-clear.webp" 
             alt="SurfNetworks" 
@@ -38,7 +48,7 @@ export const Header: React.FC = () => {
               key={item.label}
               href={item.href}
               className={`text-sm font-medium tracking-wide transition-colors relative group ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                isSolid ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
               }`}
             >
               {item.label}
@@ -46,7 +56,7 @@ export const Header: React.FC = () => {
             </a>
           ))}
           <a 
-            href="#contact"
+            href="/#contact"
             className="px-5 py-2 rounded-full bg-surf-crest text-white text-sm font-semibold hover:bg-surf-foam hover:text-surf-deep transition-all shadow-lg hover:shadow-surf-foam/50"
           >
             Get Started
@@ -83,7 +93,7 @@ export const Header: React.FC = () => {
                 </a>
               ))}
               <a 
-                 href="#contact"
+                 href="/#contact"
                  onClick={() => setIsMobileMenuOpen(false)}
                  className="text-center px-5 py-3 rounded-lg bg-surf-crest text-white font-semibold"
               >

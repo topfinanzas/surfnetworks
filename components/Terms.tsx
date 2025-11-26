@@ -19,7 +19,7 @@ export const Terms: React.FC = () => {
           </h1>
           
           <div className="prose prose-lg max-w-none text-gray-700">
-            <p className="lead">
+            <p className="text-gray-500 font-medium mb-8">
               Last Updated: October 26, 2025
             </p>
 

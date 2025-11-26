@@ -8,6 +8,8 @@ import { Metrics } from './components/Metrics';
 import { Portfolio } from './components/Portfolio';
 import { ContactFooter } from './components/ContactFooter';
 import { Terms } from './components/Terms';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { CookiePolicy } from './components/CookiePolicy';
 
 const LandingPage: React.FC = () => (
   <>
@@ -28,6 +30,8 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
           </Routes>
         </main>
         <ContactFooter />
