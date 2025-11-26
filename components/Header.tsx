@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Waves } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { NAV_ITEMS } from '../constants';
 
 export const Header: React.FC = () => {
@@ -23,15 +23,12 @@ export const Header: React.FC = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="bg-surf-crest p-2 rounded-lg group-hover:bg-surf-foam transition-colors">
-             <Waves className="text-white w-6 h-6" />
-          </div>
-          <span className={`font-display font-bold text-2xl tracking-tight ${
-            isScrolled ? 'text-white' : 'text-white'
-          }`}>
-            SurfNetworks
-          </span>
+        <a href="#" className="flex items-center group">
+          <img 
+            src="https://media.topfinanzas.com/images/surfnetworks/logo-surfnetworks-clear.webp" 
+            alt="SurfNetworks" 
+            className="h-10 w-auto md:h-12 object-contain"
+          />
         </a>
 
         {/* Desktop Nav */}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, ArrowRight, Waves, Linkedin, Twitter } from 'lucide-react';
+import { Mail, ArrowRight, Linkedin, Twitter } from 'lucide-react';
 import { Button } from './Button';
 import { FOOTER_LINKS } from '../constants';
 import { WaveDivider } from './WaveDivider';
@@ -49,11 +49,8 @@ export const ContactFooter: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="col-span-1 md:col-span-2"
           >
-            <div className="flex items-center gap-2 mb-6">
-               <div className="bg-white/10 p-2 rounded-lg">
-                 <Waves className="w-6 h-6 text-surf-foam" />
-               </div>
-               <span className="font-display font-bold text-2xl">SurfNetworks</span>
+            <div className="mb-6">
+               <img src="https://media.topfinanzas.com/images/surfnetworks/logo-surfnetworks-clear.webp" alt="SurfNetworks" className="h-12 w-auto object-contain" />
             </div>
             <p className="text-gray-400 leading-relaxed max-w-sm mb-6">
               Optimizing digital landscapes through data-driven content and programmatic networks.
