@@ -6,11 +6,11 @@ export const BRAND_COLORS = {
 };
 
 export const NAV_ITEMS = [
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'Results', href: '#results' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Results', href: '/#results' },
+  { label: 'Portfolio', href: '/#portfolio' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export const HERO_CONTENT = {
@@ -20,7 +20,7 @@ export const HERO_CONTENT = {
 };
 
 export const FOOTER_LINKS = [
+  { label: 'Terms of Service', href: '/terms' },
   { label: 'Privacy Policy', href: '#' },
-  { label: 'Terms of Service', href: '#' },
   { label: 'Cookie Policy', href: '#' },
 ];

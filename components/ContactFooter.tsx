@@ -1,18 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, ArrowRight, Linkedin, Twitter } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from './Button';
 import { FOOTER_LINKS } from '../constants';
 import { WaveDivider } from './WaveDivider';
 
 export const ContactFooter: React.FC = () => {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
     <footer id="contact" className="bg-surf-deep text-white relative pt-32 md:pt-48 pb-8">
-      <WaveDivider position="top" color="#FFFFFF" className="-mt-1" />
+      <WaveDivider position="top" color={isHome ? "#FFFFFF" : "#F8F9FA"} className="-mt-1" />
       
       <div className="container mx-auto px-6 relative z-10">
         
-        {/* CTA Section */}
+        {/* CTA Section - Only show on Home page or if explicitly desired everywhere. Keeping for consistent branding. */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,10 +80,10 @@ export const ContactFooter: React.FC = () => {
           >
             <h4 className="font-bold text-lg mb-6">Company</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-400 hover:text-surf-foam transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-surf-foam transition-colors">Careers</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-surf-foam transition-colors">Partners</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-surf-foam transition-colors">Contact</a></li>
+              <li><Link to="/#about" className="text-gray-400 hover:text-surf-foam transition-colors">About Us</Link></li>
+              <li><Link to="/#careers" className="text-gray-400 hover:text-surf-foam transition-colors">Careers</Link></li>
+              <li><Link to="/#partners" className="text-gray-400 hover:text-surf-foam transition-colors">Partners</Link></li>
+              <li><Link to="/#contact" className="text-gray-400 hover:text-surf-foam transition-colors">Contact</Link></li>
             </ul>
           </motion.div>
 
@@ -93,9 +97,9 @@ export const ContactFooter: React.FC = () => {
             <ul className="space-y-4">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-gray-400 hover:text-surf-foam transition-colors">
+                  <Link to={link.href} className="text-gray-400 hover:text-surf-foam transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
