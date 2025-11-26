@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin } from 'lucide-react';
-import { Button } from './Button';
 
 export const Founders: React.FC = () => {
   return (
@@ -42,10 +41,10 @@ export const Founders: React.FC = () => {
               
               <div className="text-center mb-8">
                 <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                  Estrategia y comercialización de medios y publicidad digital. Empresario.
+                  Digital media strategy, commercialization, and advertising. Entrepreneur.
                 </p>
                 <p className="text-sm leading-relaxed text-gray-300">
-                  <strong className="text-[#3E92CC]">Enfoque TOP:</strong> buy-side Performance Advertising, networks y data analytics.
+                  <strong className="text-[#3E92CC]">TOP Focus:</strong> buy-side Performance Advertising, networks, and data analytics.
                 </p>
               </div>
 
