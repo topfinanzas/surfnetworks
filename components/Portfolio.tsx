@@ -14,9 +14,10 @@ export const Portfolio: React.FC = () => {
           
           {/* Content */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="lg:w-1/2"
           >
             <div className="inline-block px-3 py-1 bg-surf-foam/20 text-surf-deep rounded-full text-sm font-bold mb-4">
@@ -54,10 +55,10 @@ export const Portfolio: React.FC = () => {
 
           {/* Visual Showcase */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:w-1/2 relative"
           >
             <div className="relative rounded-2xl shadow-2xl overflow-hidden border-8 border-gray-100 bg-white">

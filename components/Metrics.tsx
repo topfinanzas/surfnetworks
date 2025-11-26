@@ -17,17 +17,25 @@ export const Metrics: React.FC = () => {
           {metrics.map((metric, index) => (
             <div key={index} className="text-center">
               <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="mb-2"
               >
                 <span className="text-5xl md:text-6xl font-bold font-display text-transparent bg-clip-text bg-gradient-to-b from-surf-deep to-surf-crest">
                   {metric.value}{metric.suffix}
                 </span>
               </motion.div>
-              <p className="text-gray-500 font-medium uppercase tracking-wide text-sm">{metric.label}</p>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 + (index * 0.1) }}
+                className="text-gray-500 font-medium uppercase tracking-wide text-sm"
+              >
+                {metric.label}
+              </motion.p>
             </div>
           ))}
         </div>

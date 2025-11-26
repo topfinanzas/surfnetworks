@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Zap, Target, TrendingUp, Anchor, Smartphone, Layers } from 'lucide-react';
 import { FeatureCardProps } from '../types';
 
@@ -44,14 +43,12 @@ const features: FeatureCardProps[] = [
 ];
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon: Icon, delay }) => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay }}
       className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:shadow-surf-crest/10 transition-all group"
     >
       <div className="w-14 h-14 bg-surf-pearl rounded-xl flex items-center justify-center mb-6 group-hover:bg-surf-deep transition-colors duration-300">
@@ -72,6 +69,7 @@ export const ValueProposition: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="text-4xl font-bold font-display text-surf-deep mb-4"
           >
             Navigating the Digital Ocean
@@ -80,7 +78,7 @@ export const ValueProposition: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-600 text-lg"
           >
             We combine deep technical expertise with creative content strategies to deliver value for both users and advertisers.

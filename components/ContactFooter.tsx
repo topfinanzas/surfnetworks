@@ -13,7 +13,13 @@ export const ContactFooter: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10">
         
         {/* CTA Section */}
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-surf-crest to-blue-600 rounded-3xl p-8 md:p-12 shadow-2xl transform -translate-y-12 mb-12 relative overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto bg-gradient-to-r from-surf-crest to-blue-600 rounded-3xl p-8 md:p-12 shadow-2xl transform -translate-y-12 mb-12 relative overflow-hidden"
+        >
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
           
           <div className="relative z-10 text-center">
@@ -32,11 +38,17 @@ export const ContactFooter: React.FC = () => {
               </Button>
             </form>
           </div>
-        </div>
+        </motion.div>
 
         {/* Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-white/10 pt-16">
-          <div className="col-span-1 md:col-span-2">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="col-span-1 md:col-span-2"
+          >
             <div className="flex items-center gap-2 mb-6">
                <div className="bg-white/10 p-2 rounded-lg">
                  <Waves className="w-6 h-6 text-surf-foam" />
@@ -57,9 +69,14 @@ export const ContactFooter: React.FC = () => {
                 <Mail size={20} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h4 className="font-bold text-lg mb-6">Company</h4>
             <ul className="space-y-4">
               <li><a href="#" className="text-gray-400 hover:text-surf-foam transition-colors">About Us</a></li>
@@ -67,9 +84,14 @@ export const ContactFooter: React.FC = () => {
               <li><a href="#" className="text-gray-400 hover:text-surf-foam transition-colors">Partners</a></li>
               <li><a href="#" className="text-gray-400 hover:text-surf-foam transition-colors">Contact</a></li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <h4 className="font-bold text-lg mb-6">Legal</h4>
             <ul className="space-y-4">
               {FOOTER_LINKS.map((link) => (
@@ -80,7 +102,7 @@ export const ContactFooter: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         <div className="border-t border-white/10 mt-16 pt-8 text-center text-gray-500 text-sm">
