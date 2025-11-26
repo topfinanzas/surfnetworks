@@ -1,3 +1,4 @@
+
 export const BRAND_COLORS = {
   DEEP: '#0A2463',
   CREST: '#3E92CC',
@@ -7,6 +8,7 @@ export const BRAND_COLORS = {
 
 export const NAV_ITEMS = [
   { label: 'Services', href: '/#services' },
+  { label: 'About', href: '/#about' },
   { label: 'Process', href: '/#process' },
   { label: 'Results', href: '/#results' },
   { label: 'Portfolio', href: '/#portfolio' },

@@ -1,8 +1,11 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ValueProposition } from './components/ValueProposition';
+import { AboutUs } from './components/AboutUs';
+import { Founders } from './components/Founders';
 import { HowItWorks } from './components/HowItWorks';
 import { Metrics } from './components/Metrics';
 import { Portfolio } from './components/Portfolio';
@@ -15,6 +18,8 @@ const LandingPage: React.FC = () => (
   <>
     <Hero />
     <ValueProposition />
+    <AboutUs />
+    <Founders />
     <HowItWorks />
     <Metrics />
     <Portfolio />
