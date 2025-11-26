@@ -11,6 +11,13 @@ export const Hero: React.FC = () => {
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-32 md:pb-48 overflow-hidden bg-gradient-to-br from-surf-deep to-surf-dark">
       
@@ -85,10 +92,16 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button icon={<ArrowRight size={20} />}>
+            <Button 
+              icon={<ArrowRight size={20} />} 
+              onClick={() => scrollToSection('services')}
+            >
               {HERO_CONTENT.cta}
             </Button>
-            <Button variant="outline">
+            <Button 
+              variant="outline" 
+              onClick={() => scrollToSection('portfolio')}
+            >
               View Portfolio
             </Button>
           </motion.div>
