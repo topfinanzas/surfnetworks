@@ -72,9 +72,19 @@ export const ContactFooter: React.FC = () => {
             <p className="text-gray-400 leading-relaxed max-w-sm mb-6">
               Optimizing digital landscapes through data-driven content and programmatic networks.
             </p>
-            <div className="flex gap-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-surf-crest transition-colors">
-                <Instagram size={20} />
+            <div className="flex items-center gap-4">
+              <a 
+                href="https://instagram.com/surfnetworks" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-3 group"
+              >
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-surf-crest transition-colors duration-300">
+                  <Instagram size={20} />
+                </div>
+                <span className="text-gray-400 group-hover:text-surf-foam transition-colors duration-300 font-medium">
+                  instagram/surfnetworks
+                </span>
               </a>
             </div>
           </motion.div>
